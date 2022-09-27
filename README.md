@@ -21,7 +21,7 @@ Commenter un article
 Donner un avis pour un article
 ​
 
-Admin peut:
+Admin peut :
 
 ​
 
