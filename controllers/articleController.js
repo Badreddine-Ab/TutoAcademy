@@ -1,3 +1,4 @@
+const db = require('../models')
 
 // cretae main Model
 const Article = db.articles
