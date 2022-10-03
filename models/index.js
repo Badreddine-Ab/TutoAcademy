@@ -34,6 +34,7 @@ db.Sequelize = Sequilize
 db.sequelize = sequelize
 
 db.articles = require('./articleModel.js')(sequelize,DataTypes)
+db.categorie = require('./categorieModel.js')(sequelize,DataTypes)
 
 db.sequelize.sync({force: false})
 .then(()=> {

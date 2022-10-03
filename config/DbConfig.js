@@ -1,7 +1,7 @@
 module.exports = {
     HOST : 'localhost',
     USER : 'root',
-    PASSWORD: 'Badr@2001',
+    PASSWORD: '',
     DB: 'tutoacademy',
     dialect: 'mysql',
 
