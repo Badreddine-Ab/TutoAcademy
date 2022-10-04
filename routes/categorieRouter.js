@@ -8,6 +8,8 @@ routerCategorie.get('/AllCategorie',productController.getAllCategorie)
 
 routerCategorie.get('/:id',productController.getOneCategorie)
 
+routerCategorie.get('/getCategorieArticles', productController.getCategorieArticles)
+
 routerCategorie.put('/:id',productController.updateCategorie)
 
 routerCategorie.delete('/:id',productController.deleteCategorie)

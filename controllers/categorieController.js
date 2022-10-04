@@ -1,6 +1,9 @@
+const { where } = require('sequelize')
+const { articles } = require('../models')
 const db = require('../models')
 
 const Categorie = db.categorie
+const Article = db.articles
 
 // create categories
 
@@ -55,11 +58,26 @@ const deleteCategorie = async (req,res) => {
     res.status(200).send('categorie is deleted')
 }
 
+// Connect One To Many Relation Categorie and Article
+
+const getCategorieArticles = async(req,res)=>{
+    const data = await Categorie.findAll({
+        include: [{
+            model: Article,
+            as:'article'
+        }],
+        where : { id: 2 }
+    })
+
+    res.status(200).send(data)
+}
+
 
 module.exports = {
     addCategorie,
     getAllCategorie,
     getOneCategorie,
     updateCategorie,
-    deleteCategorie
+    deleteCategorie,
+    getCategorieArticles
 }
