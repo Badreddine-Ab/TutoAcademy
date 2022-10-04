@@ -1,17 +1,17 @@
-const productController = require('../controllers/categorieController.js')
+const categorieController = require('../controllers/categorieController.js')
 
 const routerCategorie = require('express').Router()
 
-routerCategorie.post('/addCategorie',productController.addCategorie)
+routerCategorie.post('/addCategorie',categorieController.addCategorie)
 
-routerCategorie.get('/AllCategorie',productController.getAllCategorie)
+routerCategorie.get('/AllCategorie',categorieController.getAllCategorie)
 
-routerCategorie.get('/:id',productController.getOneCategorie)
+routerCategorie.get('/:id',categorieController.getOneCategorie)
 
-routerCategorie.get('/getCategorieArticles', productController.getCategorieArticles)
+routerCategorie.put('/:id',categorieController.updateCategorie)
 
-routerCategorie.put('/:id',productController.updateCategorie)
+routerCategorie.get('/getCategorieArticles', categorieController.getCategorieArticles)
 
-routerCategorie.delete('/:id',productController.deleteCategorie)
+routerCategorie.delete('/:id',categorieController.deleteCategorie)
 
 module.exports = routerCategorie
