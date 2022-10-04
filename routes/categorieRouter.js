@@ -10,6 +10,8 @@ routerCategorie.get('/:id',categorieController.getOneCategorie)
 
 routerCategorie.put('/:id',categorieController.updateCategorie)
 
+routerCategorie.get('/getCategorieArticles', categorieController.getCategorieArticles)
+
 routerCategorie.delete('/:id',categorieController.deleteCategorie)
 
 module.exports = routerCategorie

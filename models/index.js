@@ -41,4 +41,17 @@ db.sequelize.sync({force: false})
     console.log('yes re-sync done!')
 })
 
+// 1 To Many Relation
+
+db.categorie.hasMany(db.articles, {
+    foreignKey: 'categorie_id',
+    as:'article'
+})
+
+
+db.articles.belongsTo(db.categorie,{
+    foreignKey: 'categorie_id',
+    as:'categorie'
+})
+
 module.exports = db
