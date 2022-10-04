@@ -8,7 +8,8 @@ const addCategorie = async (req,res)=>{
 
     let info = {
         title : req.body.title,
-        icon : req.body.icon
+        icon : req.body.icon,
+        description : req.body.description
     }
     const categorie = await Categorie.create(info)
     res.status(200).send(categorie)

@@ -27,36 +27,24 @@ app.use('/api/categories',routerCategorie)
 app.get("/",(req,res) => {
     res.render('index')
 })
-app.get("/about",(req,res) => {
-    res.render('about')
+app.get("/Developpement",(req,res) => {
+    res.render('Developpement')
 })
-app.get("/category",(req,res) => {
-    res.render('category')
+app.get("/Design",(req,res) => {
+    res.render('Design')
 })
-app.get("/single-video",(req,res) => {
-    res.render('single-video')
+app.get("/Music",(req,res) => {
+    res.render('Music')
 })
-app.get("/single-audio",(req,res) => {
-    res.render('single-audio')
+app.get("/Marketing",(req,res) => {
+    res.render('Marketing')
 })
-app.get("/single-gallery",(req,res) => {
-    res.render('single-gallery')
+app.get("/Photography",(req,res) => {
+    res.render('Photography')
 })
-app.get("/single-standard",(req,res) => {
-    res.render('single-standard')
+app.get("/Business",(req,res) => {
+    res.render('Business')
 })
-app.get("/style-guide",(req,res) => {
-    res.render('style-guide')
-})
-app.get("/contact",(req,res) => {
-    res.render('contact')
-})
-// app.get("/single-standard",(req,res) => {
-//     res.render('single-standard')
-// })
-// app.get("/single-standard",(req,res) => {
-//     res.render('single-standard')
-// })
 
 // port
 
