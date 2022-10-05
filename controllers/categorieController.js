@@ -47,6 +47,7 @@ const updateCategorie = async (req,res) => {
     let id = req.params.id
     const categorie = await Categorie.update(req.body,{where : {id : id}})
     res.status(200).send(categorie)
+    
    
 }
 
@@ -54,7 +55,7 @@ const updateCategorie = async (req,res) => {
 
 const deleteCategorie = async (req,res) => {
 
-    let id = req.params.id
+    let id = req.params.id  
     await Categorie.destroy({where: {id : id}})
     res.status(200).send('categorie is deleted')
 }
