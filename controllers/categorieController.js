@@ -29,7 +29,7 @@ const getAllCategorie = async (req,res)=> {
 
 //  get Single Categories
 
-const getOneCategorie = async  (req,res) => {
+const getOneCategorie = async (req,res) => {
 
     let id = req.params.id
     let categorie = await Categorie.findOne({

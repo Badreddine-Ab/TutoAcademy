@@ -1,4 +1,5 @@
-const express = require('express')
+const express = require('express');
+const { categorie } = require('./models/index.js');
 
 const app = express()
 
@@ -47,7 +48,21 @@ app.get("/Photography",(req,res) => {
 app.get("/Business",(req,res) => {
     res.render('Business')
 })
-
+app.get("/dashboard",(req,res) => {
+    res.render('dashboard')
+})
+app.get("/article",(req,res) => {
+    res.render('article')
+})
+app.get("/review",(req,res) => {
+    res.render('review')
+})
+app.get("/commentaire",(req,res) => {
+    res.render('commentaire')
+})
+app.get("/categorie",(req,res) => {
+    res.render('categorie')
+})
 // port
 
 const PORT = process.env.PORT || 8080
