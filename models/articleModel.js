@@ -2,17 +2,18 @@ module.exports = (sequelize,DataTypes) => {
     const Article = sequelize.define("articles", {
         title: {
             type: DataTypes.STRING,
-            // allowNull: false
+            allowNull: false
         },
         content:{
             type: DataTypes.STRING,
-            // allowNull: false
+            allowNull: false
         },
         images:{
             type:DataTypes.STRING,
         },
         description:{
-            type:DataTypes.TEXT
+            type:DataTypes.TEXT,
+            
         },
         published:{
             type:DataTypes.BOOLEAN

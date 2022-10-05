@@ -1,5 +1,5 @@
-
 const db = require('../models')
+
 // cretae main Model
 const Article = db.articles
 
@@ -12,13 +12,13 @@ const addArticle = async(req,res) => {
         title: req.body.title,
         content: req.body.content,
         images: req.body.images,
-        descritption: req.body.descritption,
+        description: req.body.description,
         published: req.body.published ? req.body.published  : false
 
     }
-    console.log('hehehehe');
+    
     const article = await Article.create(info)
-    res.status(200).send('heheh')
+    res.status(200).send(article)
 
 }
 

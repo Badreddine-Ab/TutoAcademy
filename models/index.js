@@ -36,10 +36,24 @@ db.sequelize = sequelize
 
 db.comments = require('./commentModel.js')(sequelize,DataTypes)
 db.articles = require('./articleModel.js')(sequelize,DataTypes)
+db.categorie = require('./categorieModel.js')(sequelize,DataTypes)
 
 db.sequelize.sync({force: false})
 .then(()=> {
     console.log('yes re-sync done!')
+})
+
+// 1 To Many Relation
+
+db.categorie.hasMany(db.articles, {
+    foreignKey: 'categorie_id',
+    as:'article'
+})
+
+
+db.articles.belongsTo(db.categorie,{
+    foreignKey: 'categorie_id',
+    as:'categorie'
 })
 
 module.exports = db
