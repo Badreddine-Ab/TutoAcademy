@@ -1,29 +1,38 @@
+const express = require('express')
+const cors = require('cors')
+const exp = require('constants')
 
-  
-  const express = require("express");
-  const cors = require("cors");
-  
-  const app = express();
-  
-  var corsOptions = {
-    origin: "http://localhost:8081"
-  };
-  
-  app.use(cors(corsOptions));
-  
-  // parse requests of content-type - application/json
-  app.use(express.json());
-  
-  // parse requests of content-type - application/x-www-form-urlencoded
-  app.use(express.urlencoded({ extended: true }));
-  
-  // simple route
-  app.get("/", (req, res) => {
-    res.json({ message: "Welcome to bezkoder application." });
-  });
-  
-  // set port, listen for requests
-  const PORT = process.env.PORT || 8080;
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}.`);
-  });
+const app = express()
+
+var corOptions = {
+    origin : 'https://localhost:8081'
+}
+
+
+// middleware
+app.use(cors(corOptions))
+app.use(express.json())
+app.use(express.urlencoded({extend: true}))
+
+
+// routers
+const router = require('./routes/articleRouter.js')
+app.use('/api/articles',router)
+const routerComment = require('./routes/commentRouter.js')
+app.use('/api/comments',routerComment)
+
+
+//testing api 
+app.get('/',(req,res) => {
+    res.json({message: 'hello from api'})
+})
+
+// port
+
+const PORT = process.env.PORT || 8080
+
+// server
+
+app.listen(PORT, ()=> {
+    console.log('server is running port' + PORT)
+})

@@ -1,18 +1,17 @@
 {
-  "dependencies": {
-    "ejs": "^3.1.8",
-    "express": "^4.18.1",
-    "mysql": "^2.18.1",
-    "mysql2": "^2.3.3",
-    "sequelize": "^6.23.2"
-  },
-  "name": "youcode",
+  "name": "node",
   "version": "1.0.0",
+  "description": "node express crud api with sequilize",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "chaimaa",
+  "author": "",
   "license": "ISC",
-  "description": ""
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.23.2"
+  }
 }
