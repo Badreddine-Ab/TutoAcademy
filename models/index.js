@@ -33,6 +33,8 @@ const db = {}
 db.Sequelize = Sequilize
 db.sequelize = sequelize
 
+
+db.comments = require('./commentModel.js')(sequelize,DataTypes)
 db.articles = require('./articleModel.js')(sequelize,DataTypes)
 db.categorie = require('./categorieModel.js')(sequelize,DataTypes)
 

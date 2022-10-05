@@ -16,6 +16,8 @@ app.use(express.static(__dirname + '/public'));
 // routers
 const router = require('./routes/articleRouter.js')
 app.use('/api/articles',router)
+const routerComment = require('./routes/commentRouter.js')
+app.use('/api/comments',routerComment)
 
 
 const routerCategorie = require('./routes/categorieRouter.js')
