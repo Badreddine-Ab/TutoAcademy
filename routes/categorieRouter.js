@@ -2,6 +2,8 @@ const categorieController = require('../controllers/categorieController.js')
 
 const routerCategorie = require('express').Router()
 
+routerCategorie.get('/getCategorieArticles', categorieController.getCategorieArticles)
+
 routerCategorie.post('/addCategorie',categorieController.addCategorie)
 
 routerCategorie.get('/AllCategorie',categorieController.getAllCategorie)
@@ -10,7 +12,7 @@ routerCategorie.get('/:id',categorieController.getOneCategorie)
 
 routerCategorie.put('/:id',categorieController.updateCategorie)
 
-routerCategorie.get('/getCategorieArticles', categorieController.getCategorieArticles)
+
 
 routerCategorie.delete('/:id',categorieController.deleteCategorie)
 
