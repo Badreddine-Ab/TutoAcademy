@@ -2,6 +2,15 @@ const express = require('express')
 
 const app = express()
 
+app.get('/hello/:id[0-9]', function(req, res){
+    res.send("Hello world!" + req.params.id);
+ });
+ app.all('/helloo', function(req, res){
+    res.send("You just called the post method at '/hello'!\n");
+ });
+ 
+ 
+
 
 // middleware
 app.use(express.json())
