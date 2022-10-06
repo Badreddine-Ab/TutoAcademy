@@ -1,5 +1,12 @@
 const express = require('express');
 const { categorie } = require('./models/index.js');
+const {getAllCategorie} = require("./controllers/categorieController")
+const {addCategorie} = require("./controllers/categorieController")
+const {getOneCategorie} = require("./controllers/categorieController")
+const {updateCategorie} = require("./controllers/categorieController")
+const {deleteCategorie} = require("./controllers/categorieController")
+const {getCategorieArticles} = require("./controllers/categorieController")
+const{countCategorie} = require("./controllers/categorieController")
 
 const app = express()
 
@@ -20,36 +27,12 @@ app.use('/api/articles',router)
 const routerComment = require('./routes/commentRouter.js')
 app.use('/api/comments',routerComment)
 
-
 const routerCategorie = require('./routes/categorieRouter.js')
 app.use('/api/categories',routerCategorie)
-
-
 
 //testing api 
 app.get("/",(req,res) => {
     res.render('index')
-})
-app.get("/Developpement",(req,res) => {
-    res.render('Developpement')
-})
-app.get("/Design",(req,res) => {
-    res.render('Design')
-})
-app.get("/Music",(req,res) => {
-    res.render('Music')
-})
-app.get("/Marketing",(req,res) => {
-    res.render('Marketing')
-})
-app.get("/Photography",(req,res) => {
-    res.render('Photography')
-})
-app.get("/Business",(req,res) => {
-    res.render('Business')
-})
-app.get("/dashboard",(req,res) => {
-    res.render('dashboard')
 })
 app.get("/article",(req,res) => {
     res.render('article')
@@ -60,10 +43,6 @@ app.get("/review",(req,res) => {
 app.get("/commentaire",(req,res) => {
     res.render('commentaire')
 })
-app.get("/categorie",(req,res) => {
-    res.render('categorie')
-})
-// port
 
 const PORT = process.env.PORT || 8080
 

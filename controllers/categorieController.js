@@ -15,17 +15,25 @@ const addCategorie = async (req,res)=>{
         description : req.body.description
     }
     const categorie = await Categorie.create(info)
-    res.status(200).send(categorie)
-    console.log(categorie)
+    res.redirect('/categorie');
 }
 
 // get All categories
 
 const getAllCategorie = async (req,res)=> {
     let categories = await Categorie.findAll({})
-    res.status(200).send(categories)
+    return categories
 }
 
+const getArticleByCategorie = async (req,res)=> {
+    let id = req.params.id  
+    let articles = await Article.findAll({ 
+        where : {
+            CategorieId: id
+    }
+})
+    return articles
+}
 
 //  get Single Categories
 
@@ -46,9 +54,8 @@ const updateCategorie = async (req,res) => {
 
     let id = req.params.id
     const categorie = await Categorie.update(req.body,{where : {id : id}})
-    res.status(200).send(categorie)
-    
-   
+    // res.status(200).send(categorie)
+    res.redirect('/categorie');
 }
 
 //  delete categorie by id
@@ -74,6 +81,12 @@ const getCategorieArticles = async(req,res)=>{
     res.status(200).send(data)
 }
 
+// count categorie
+const countCategorie = async(req,res)=>{
+    let count_ = await Categorie.count({})
+    return count_
+}
+
 
 module.exports = {
     addCategorie,
@@ -81,5 +94,7 @@ module.exports = {
     getOneCategorie,
     updateCategorie,
     deleteCategorie,
-    getCategorieArticles
+    getCategorieArticles,
+    countCategorie,
+    getArticleByCategorie
 }

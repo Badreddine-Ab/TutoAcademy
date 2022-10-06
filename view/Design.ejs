@@ -87,7 +87,21 @@
                     <h2 class="header__nav-heading h6">Site Navigation</h2>
 
                     <ul class="header__nav">
-                        <li><a href="/Design" title="">Design</a></li>
+
+                        <% for(category of data) {%>
+                            <li>
+                                <!-- <a href="/articleByCategorie"> -->
+                                <a href="">
+                                    <%= category.title%>
+                                </a>
+                            </li>
+
+                            <%}%>
+
+
+
+
+                                <!-- <li><a href="/Design" title="">Design</a></li>
                         <li><a href="/Developpement" title="">Developpement</a></li>
                         <li><a href="/Marketing" title="">Marketing</a></li>
                         <li><a href="/Music" title="">Music</a></li>
@@ -97,7 +111,7 @@
                                 <li><a href="/Photography">Photography</li>
                                 <li><a href="/Business">Business</a></li>
                             </ul>
-                        </li>
+                        </li> -->
                     </ul> <!-- end header__nav -->
 
                     <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
@@ -116,10 +130,26 @@
 
         <div class="row narrow">
             <div class="col-full s-content__header" data-aos="fade-up">
-                <h1>Category: Lifestyle</h1>
+                <h1>Category: <% for(category of data) {%>
 
-                <p class="lead">Dolor similique vitae. Exercitationem quidem occaecati iusto. Id non vitae enim quas
-                    error dolor maiores ut. Exercitationem earum ut repudiandae optio veritatis animi nulla qui dolores.
+                        <%if(category.id== 1 ){%>
+
+                            <%= category.title %>
+
+                                <% } %>
+
+                                    <%}%>
+                </h1>
+
+                <p class="lead">
+                    <% for(category of data) {%>
+                        <%if(category.id== 1 ){%>
+
+                            <%= category.description %>
+
+                                <% } %>
+                                    <%}%>
+
                 </p>
             </div>
         </div>
@@ -610,12 +640,19 @@
                 <h3>Tags</h3>
 
                 <div class="tagcloud">
-                    <a href="/Design">Design</a>
+                    <%for(category of data){%>
+                        <a href="/categories/<%=category.title%>">
+                            <%= category.title %>
+                        </a>
+
+
+                        <%}%>
+                            <!-- <a href="/Design">Design</a>
                     <a href="/Developpement">Developpement</a>
                     <a href="/Marketing">Marketing</a>
                     <a href="/Music">Music</a>
                     <a href="/Photography">Photography</a>
-                    <a href="/Business">Business</a>
+                    <a href="/Business">Business</a> -->
                 </div> <!-- end tagcloud -->
             </div> <!-- end tags -->
         </div> <!-- end tags-wrap -->
