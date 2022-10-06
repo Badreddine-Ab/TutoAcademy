@@ -2,7 +2,7 @@ const categorieController = require('../controllers/categorieController.js')
 
 const routerCategorie = require('express').Router()
 
-routerCategorie.get('/getCategorieArticles', categorieController.getCategorieArticles)
+routerCategorie.get('/getCategorieArticles/:id', categorieController.getCategorieArticles)
 
 routerCategorie.post('/addCategorie',categorieController.addCategorie)
 

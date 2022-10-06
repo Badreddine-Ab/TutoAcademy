@@ -1,6 +1,7 @@
 const { where } = require('sequelize')
-const { articles } = require('../models')
+const { articles, categorie } = require('../models')
 const db = require('../models')
+
 
 const Categorie = db.categorie
 const Article = db.articles
@@ -63,12 +64,15 @@ const deleteCategorie = async (req,res) => {
 // Connect One To Many Relation Categorie and Article
 
 const getCategorieArticles = async(req,res)=>{
-    const data = await Categorie.findAll({
+    
+    const id = req.params.id
+    
+    const data = await Categorie.findOne({
         include: [{
             model: Article,
             as:'article'
         }],
-        where : { id: 2 }
+        where : { id: id }
     })
 
     res.status(200).send(data)
