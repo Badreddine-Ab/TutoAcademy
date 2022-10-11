@@ -17,8 +17,12 @@ router.get('/all', function(req , res){
     // res.end(req.params.id)
 })
 
-router.put('/:id', commentController.UpdateComment)
+// router.get('/:id/edit', function(req , res){
+//     res.render('editcomment')
+// })
+router.get('/:id/edit', commentController.getSingleComment)
+router.post('/:id/edit', commentController.UpdateComment)
 
-router.delete('/:id', commentController.deleteComment)
+router.post('/:id/delete', commentController.deleteComment)
 
 module.exports = router

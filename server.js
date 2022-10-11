@@ -72,6 +72,12 @@ app.get("/commentaire",(req,res) => {
 app.get("/categorie",(req,res) => {
     res.render('categorie')
 })
+app.get("/addcomment",(req,res) => {
+    res.render('addcomment')
+})
+// app.get("/editcomment",(req,res) => {
+//     res.render('editcomment')
+// })
 // port
 
 const PORT = process.env.PORT || 8080
