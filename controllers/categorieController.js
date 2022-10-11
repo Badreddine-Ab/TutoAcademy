@@ -12,33 +12,28 @@ const addCategorie = async (req,res)=>{
 
     let info = {
         title : req.body.title,
-        icon : req.body.icon,
         description : req.body.description
     }
     const categorie = await Categorie.create(info)
-    res.status(200).send(categorie)
-    console.log(categorie)
+    res.redirect('/categorie');
 }
 
 // get All categories
 
 const getAllCategorie = async (req,res)=> {
     let categories = await Categorie.findAll({})
-    res.status(200).send(categories)
+    return categories
 }
-
-
-//  get Single Categories
 
 const getOneCategorie = async (req,res) => {
 
     let id = req.params.id
-    let categorie = await Categorie.findOne({
+    let data = await Categorie.findOne({
         where : {
             id : id
         }
     })
-    res.status(200).send(categorie)
+    return data
 }
 
 //  update Categories
@@ -47,9 +42,7 @@ const updateCategorie = async (req,res) => {
 
     let id = req.params.id
     const categorie = await Categorie.update(req.body,{where : {id : id}})
-    res.status(200).send(categorie)
-    
-   
+    res.redirect('/categorie');
 }
 
 //  delete categorie by id
@@ -58,24 +51,31 @@ const deleteCategorie = async (req,res) => {
 
     let id = req.params.id  
     await Categorie.destroy({where: {id : id}})
-    res.status(200).send('categorie is deleted')
+    res.redirect('/categorie');
+
 }
 
 // Connect One To Many Relation Categorie and Article
 
 const getCategorieArticles = async(req,res)=>{
-    
     const id = req.params.id
-    
     const data = await Categorie.findOne({
         include: [{
             model: Article,
             as:'article'
         }],
         where : { id: id }
+        
     })
-
     res.status(200).send(data)
+    console.log("data is *********::"+data)
+   return data;
+}
+
+// count categorie
+const countCategorie = async(req,res)=>{
+    let count_ = await Categorie.count({})
+    return count_
 }
 
 
@@ -85,5 +85,6 @@ module.exports = {
     getOneCategorie,
     updateCategorie,
     deleteCategorie,
-    getCategorieArticles
+    getCategorieArticles,
+    countCategorie
 }

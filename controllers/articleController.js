@@ -69,6 +69,7 @@ const getPublishedArticle = async (req,res) => {
     res.status(200).send(articles)
 }
 
+
 module.exports = {
     addArticle,
     getAllArticles,
