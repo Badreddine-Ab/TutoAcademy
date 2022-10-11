@@ -41,17 +41,16 @@ routerCategorie.get("/deletcategorie/:id", async (req,res) => {
     const category = await categorieController.deleteCategorie(req, res)
 });
 
-routerCategorie.get("/categorie/:id",async (req,res) => {
-    const articles = await categorieController.getCategorieArticles(req, res)
-    console.log(articles)
-    const category = await categorieController.getAllCategorie(req, res)
-    res.redirect('Design', {
-        data:category,
-        article: articles
+// routerCategorie.get("/categorie/:id",async (req,res) => {
+//     const articles = await categorieController.getCategorieArticles(req, res)
+//     console.log(articles)
+//     const category = await categorieController.getAllCategorie(req, res)
+//     res.redirect('Design', {
+//         data:category,
+//         article: articles
         
-    })
-    
-})
+// })   
+// })
 
 routerCategorie.get("/design",async (req,res) => {
     const category = await categorieController.getAllCategorie(req, res)
