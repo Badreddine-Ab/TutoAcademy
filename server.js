@@ -1,5 +1,5 @@
 const express = require('express');
-const { categorie } = require('./models/index.js');
+// const { categorie } = require('./models/index.js');
 
 const app = express()
 
