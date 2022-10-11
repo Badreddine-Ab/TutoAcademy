@@ -56,4 +56,15 @@ db.articles.belongsTo(db.categorie,{
     as:'categorie'
 })
 
+db.article.hasMany(db.comments, {
+    foreignKey: 'article_id',
+    as:'comment'
+})
+
+
+db.comments.belongsTo(db.article,{
+    foreignKey: 'article_id',
+    as:'article'
+})
+
 module.exports = db
