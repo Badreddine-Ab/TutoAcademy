@@ -12,7 +12,6 @@ const addCategorie = async (req,res)=>{
 
     let info = {
         title : req.body.title,
-        icon : req.body.icon,
         description : req.body.description
     }
     const categorie = await Categorie.create(info)
@@ -26,27 +25,15 @@ const getAllCategorie = async (req,res)=> {
     return categories
 }
 
-const getArticleByCategorie = async (req,res)=> {
-    let id = req.params.id  
-    let articles = await Article.findAll({ 
-        where : {
-            CategorieId: id
-    }
-})
-    return articles
-}
-
-//  get Single Categories
-
 const getOneCategorie = async (req,res) => {
 
     let id = req.params.id
-    let categorie = await Categorie.findOne({
+    let data = await Categorie.findOne({
         where : {
             id : id
         }
     })
-    res.status(200).send(categorie)
+    return data
 }
 
 //  update Categories
@@ -55,7 +42,6 @@ const updateCategorie = async (req,res) => {
 
     let id = req.params.id
     const categorie = await Categorie.update(req.body,{where : {id : id}})
-    // res.status(200).send(categorie)
     res.redirect('/categorie');
 }
 
@@ -65,24 +51,25 @@ const deleteCategorie = async (req,res) => {
 
     let id = req.params.id  
     await Categorie.destroy({where: {id : id}})
-    res.status(200).send('categorie is deleted')
+    res.redirect('/categorie');
+
 }
 
 // Connect One To Many Relation Categorie and Article
 
 const getCategorieArticles = async(req,res)=>{
-    
     const id = req.params.id
-    
     const data = await Categorie.findOne({
         include: [{
             model: Article,
             as:'article'
         }],
         where : { id: id }
+        
     })
-
     res.status(200).send(data)
+    console.log("data is *********::"+data)
+   return data;
 }
 
 // count categorie
@@ -99,6 +86,5 @@ module.exports = {
     updateCategorie,
     deleteCategorie,
     getCategorieArticles,
-    countCategorie,
-    getArticleByCategorie
+    countCategorie
 }
