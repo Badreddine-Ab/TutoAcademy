@@ -8,6 +8,8 @@ const Comment = db.comments
 // 1. crete Comment
 
 const addComment = async(req,res) => {
+    // console.log(req.body.email);
+    console.log('email :>> ', req.body.email);
     let info = {
         name: req.body.name,
         email: req.body.email,
@@ -16,9 +18,12 @@ const addComment = async(req,res) => {
         // published: req.body.published ? req.body.published  : false
 
     }
-    console.log('hehehehe');
+    
     const comment = await Comment.create(info)
-    res.status(200).send('heheh')
+    console.log(info);
+    res.redirect('allcomment')
+    // res.render("commentaire" );
+    // res.status(200).send('add  comment js')
 
 }
 
@@ -26,7 +31,8 @@ const addComment = async(req,res) => {
 
 const getAllComments = async (req,res) => {
     let comments = await Comment.findAll({})
-    res.status(200).send(comments)
+    // res.status(200).send(comments)
+    res.render("commentaire" , {comments : comments } );
 }
 
 // 3. get single comment
@@ -34,7 +40,9 @@ const getAllComments = async (req,res) => {
 const getSingleComment = async (req,res) => {
     let id =req.params.id
     let comment = await Comment.findOne({ where: {id:id}})
-    res.status(200).send(comment)
+    console.log(comment);
+    res.render("editcomment" , {comment : comment } );
+    // res.status(200).send(comment)
 }
 
 
@@ -45,8 +53,9 @@ const UpdateComment = async (req,res) => {
     
 
     const comment = await Comment.update(req.body, {where:{id:id}})
+    res.redirect('/api/comments/allComment');
     
-    res.status(200).send(comment)
+    // res.status(200).send(comment)
 }
 
 // 5. Delete Comment
@@ -56,7 +65,8 @@ const deleteComment = async (req,res) => {
     
     await Comment.destroy({where: {id:id}})
 
-    res.status(200).send('Comment is deleted')
+    res.redirect('/api/comments/allComment');
+    // res.status(200).send('Comment is deleted')
 }
 
 // 6. Publihsed Comment

@@ -9,10 +9,20 @@ router.get('/allComment', commentController.getAllComments)
 // router.get('/published', commentController.getPublishedComment)
 
 
-router.get('/:id', commentController.getSingleComment)
+// router.get('/:id', commentController.getSingleComment)
+router.get('/all', function(req , res){
+    // res.send('very good' + req.params.id)
+    Comment.findAll().then(Comment => res.json(Comment));  
 
-router.put('/:id', commentController.UpdateComment)
+    // res.end(req.params.id)
+})
 
-router.delete('/:id', commentController.deleteComment)
+// router.get('/:id/edit', function(req , res){
+//     res.render('editcomment')
+// })
+router.get('/:id/edit', commentController.getSingleComment)
+router.post('/:id/edit', commentController.UpdateComment)
+
+router.post('/:id/delete', commentController.deleteComment)
 
 module.exports = router
